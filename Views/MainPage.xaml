@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="TestAnalyserMaui.Views.MainPage"
+            xmlns:local="clr-namespace:TestAnalyserMaui.Views"
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+    <TabbedPage.Children>
+        <local:HomePage IconImageSource="icon_home.png" Title="Главная" />
+        <local:Groups IconImageSource="icon_group.png" Title="Группа" />
+        <local:Students IconImageSource="icon_studen.png" Title="Участники" />
+        <local:HistoryTemplates IconImageSource="icon_template.png" Title="Шаблоны" />
+        <local:Settings IconImageSource="icon_setting.png" Title="Настройки" />
+    </TabbedPage.Children>
+
+</TabbedPage>
