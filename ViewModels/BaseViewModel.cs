@@ -1,35 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace AnalyserTestMobileApp.ViewModels
 {
-    public class BaseViewModel: INotifyPropertyChanged
-    {
-        protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName] string propertyName = "",
-            Action onChanged = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
+	public class BaseViewModel : INotifyPropertyChanged
+	{
+		bool isBusy = false;
+		public bool IsBusy
+		{
+			get { return isBusy; }
+			set { SetProperty(ref isBusy, value); }
+		}
 
-            backingStore = value;
-            onChanged?.Invoke();
-            OnPropertyChanged(propertyName);
-            return true;
-        }
+		
+		protected bool SetProperty<T>(ref T backingStore, T value,
+			[CallerMemberName] string propertyName = "",
+			Action onChanged = null)
+		{
+			if (EqualityComparer<T>.Default.Equals(backingStore, value))
+				return false;
 
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
+			backingStore = value;
+			onChanged?.Invoke();
+			OnPropertyChanged(propertyName);
+			return true;
+		}
 
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
-    }
+		#region INotifyPropertyChanged
+		public event PropertyChangedEventHandler PropertyChanged;
+		protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+		}
+		#endregion
+	}
 }

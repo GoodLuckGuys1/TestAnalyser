@@ -7,7 +7,7 @@
             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
             android:TabbedPage.ToolbarPlacement="Bottom">
     <TabbedPage.Children>
-        <local:HomePage IconImageSource="icon_home.png" Title="Главная" />
+		<local:HomePage IconImageSource="icon_home.png" Title="Главная" />
         <local:Groups IconImageSource="icon_group.png" Title="Группа" />
         <local:Students IconImageSource="icon_studen.png" Title="Участники" />
         <local:HistoryTemplates IconImageSource="icon_template.png" Title="Шаблоны" />

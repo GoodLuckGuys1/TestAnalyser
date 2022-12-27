@@ -3,38 +3,74 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:TestAnalyserMaui.ViewModels"
-             xmlns:views="clr-namespace:XCalendar.Maui.Views;assembly=XCalendar.Maui"
-
+             xmlns:views="clr-namespace:TestAnalyserMaui.Views"
              x:Class="TestAnalyserMaui.Views.HomePage">
 
     <ContentPage.BindingContext>
         <viewModels:HomeViewModel />
     </ContentPage.BindingContext>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <ScrollView Grid.Row="0">
+    <ScrollView>
+        <Grid>
+			<Grid.Background>
+				<LinearGradientBrush EndPoint="0,1">
+					<GradientStop Color="#ff00cc" Offset="0.1"/>
+					<GradientStop Color="#333399" Offset="1.0"/>
+				</LinearGradientBrush>
+			</Grid.Background>
+			
+			<Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Padding="30,24,30,24" Spacing="10">
-                <Label FontSize="22" Text = "Hello METANIT.COM!"
-                       TextDecorations = "Underline" CharacterSpacing = "2"
-                       FontAttributes = "Bold" FontFamily = "Helvetica"
-                       HorizontalOptions="Center" VerticalOptions="Center"
-                />
-                <views:CalendarView
-                    Days="{Binding Calendar.Days}"
-                    DaysOfWeek="{Binding Calendar.DayNamesOrder}"
-                    NavigatedDate="{Binding Calendar.NavigatedDate}">
-                </views:CalendarView>
-            </StackLayout>
-        </ScrollView>
-        <!--<ImageButton x:Name="CameraButton" Grid.Row="0" Margin="0,0,10,10" BackgroundColor="Transparent"
-                     CornerRadius="10" VerticalOptions="End" HorizontalOptions="End"
-                     WidthRequest="30" HeightRequest="30" Source="icon_camera.png">
+            <Label Grid.Row="0" FontSize="42" Text="События" CharacterSpacing="1"
+                   FontAttributes="Bold" FontFamily="Vasek"
+                   HorizontalOptions="Center" VerticalOptions="Center" />
 
-        </ImageButton>-->
-    </Grid>
+			<views:EventCalendarExamplePage Grid.Row="1" VerticalOptions = "StartAndExpand"/>
+
+
+			<Label Margin="0,20,10,0" Grid.Row="2" FontSize="42" Text="Новости" CharacterSpacing="2"
+                   FontAttributes="Bold" FontFamily="Vasek"
+                   HorizontalOptions="Center" VerticalOptions="Center" />
+			
+            <Frame Margin="10,10,10,10" Grid.Row="3">
+
+                <StackLayout>
+                    <Label FontSize="30" Text="Тут вот новости разные там" CharacterSpacing="2"
+                           FontFamily="Vasek"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Label FontSize="30" Text="Тут вот тоже типо новости" CharacterSpacing="2"
+                           FontFamily="Vasek"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                </StackLayout>
+
+            </Frame>
+			
+            <Label Margin="10,10,10,10" Grid.Row="4" FontSize="42" Text="Как юзать программку"
+                   CharacterSpacing="2"
+                   FontAttributes="Bold" FontFamily="Vasek"
+                   HorizontalOptions="Center" VerticalOptions="Center" />
+			
+            <Frame Margin="10,10,10,10" Grid.Row="5">
+                <StackLayout>
+					<Label FontSize="30" Text="Тут вот ссылка, например" CharacterSpacing="2"
+                           FontFamily="Vasek"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+					<Label FontSize="30" Text="Тут вот видосик, например" CharacterSpacing="2"
+                           FontFamily="Vasek"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                </StackLayout>
+
+            </Frame>
+
+        </Grid>
+
+    </ScrollView>
+
 </ContentPage>

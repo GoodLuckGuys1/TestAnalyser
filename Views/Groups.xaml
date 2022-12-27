@@ -2,12 +2,42 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TestAnalyserMaui.Views.Groups">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Hello, world!"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="TestAnalyserMaui.Views.Groups"
+             xmlns:controls="clr-namespace:UraniumUI.Material.Controls;assembly=UraniumUI.Material"
+             xmlns:viewModels="clr-namespace:TestAnalyserMaui.ViewModels">
+    <ContentPage.BindingContext>
+        <viewModels:GroupsViewModel />
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="Auto, Auto, *">
+		<Grid.Background>
+			<LinearGradientBrush EndPoint="0,1">
+				<GradientStop Color="#ff00cc" Offset="0.1"/>
+				<GradientStop Color="#333399" Offset="1.0"/>
+			</LinearGradientBrush>
+		</Grid.Background>
+
+		<StackLayout>
+			<Label Text="Группы" FontSize="42" CharacterSpacing="1" Margin="0,15,0,10"
+                   FontAttributes="Bold" FontFamily="Vasek"
+                   HorizontalOptions="Center" VerticalOptions="Center" />
+		</StackLayout>
+		
+		
+		<Grid Grid.Row="1" ColumnDefinitions="*,*,*">
+			<Button  StyleClass="ElevatedButton" Text="Elevated Button" Margin="10,10,10,10" />
+		</Grid>
+		
+        <ScrollView Grid.Row="2" IsClippedToBounds="true">
+            <controls:DataGrid ItemsSource="{Binding Items}" VerticalOptions = "StartAndExpand" HorizontalOptions="Center" UseAutoColumns="True" Margin="30" >
+                <ActivityIndicator IsRunning="{Binding IsBusy}" Margin="40" />
+                <controls:DataGrid.EmptyView>
+                    <VerticalStackLayout Margin="80,20">
+                        <Label Text="Нет данных о группах тестируемых..." HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </controls:DataGrid.EmptyView>
+            </controls:DataGrid>
+        </ScrollView>
+</Grid>
+  
+   
 </ContentPage>
